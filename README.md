@@ -1,5 +1,5 @@
 
-# Secure App with LAB WORK
+# Secure App Project
 
 A secure web application built with Node.js, Express, MongoDB, and EJS. This project includes user authentication, two-factor authentication (2FA), QR code generation, and email notifications.
 
