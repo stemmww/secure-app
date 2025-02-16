@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, <%= user.username %>!</h1>
+        <p>Your Email: <%= user.email %></p>
+
+        <!-- 🟢 Show Profile Picture -->
+        <img src="/uploads/<%= user.profilePic %>" alt="Profile Picture" class="profile-pic">
+
+        <!-- 🟢 Upload New Profile Picture -->
+        <form action="/auth/upload-profile" method="POST" enctype="multipart/form-data">
+            <input type="file" name="profilePic" required>
+            <button type="submit">Upload Profile Picture</button>
+        </form>
+
+        <!-- 🟢 Enable 2FA Button -->
+        <% if (!user.is2FAEnabled) { %>
+            <a href="/auth/setup-2fa" class="btn-primary">Enable 2FA</a>
+        <% } else { %>
+            <p>Two-Factor Authentication is enabled.</p>
+        <% } %>
+
+        <!-- 🟢 Manage Your Data Button -->
+        <a href="/data" class="btn-primary">Manage Your Data</a>
+
+        <!-- 🟢 Logout Button -->
+        <a href="/auth/logout" class="btn-danger">Logout</a>
+    </div>
+</body>
+</html>

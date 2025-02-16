@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Two-Factor Authentication</h2>
+        <p>Please enter the OTP from your Authenticator app to continue.</p>
+
+        <form action="/auth/verify-otp" method="POST" class="otp-form">
+            <label for="otp">Enter OTP:</label>
+            <input type="text" name="otp" class="otp-input" required placeholder="Enter OTP">
+            <button type="submit" class="btn-primary">Verify OTP</button>
+        </form>
+
+        <% if (typeof error !== 'undefined' && error) { %>
+            <p class="error-msg"><%= error %></p>
+        <% } %>
+
+        <a href="/auth/login" class="btn-secondary">Back to Login</a>
+    </div>
+</body>
+</html>

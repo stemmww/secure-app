@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enable Two-Factor Authentication</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Enable Two-Factor Authentication</h2>
+        <p>Scan the QR code below with your Authenticator app (Google Authenticator, Authy, etc.).</p>
+
+        <div class="qr-container">
+            <img src="<%= qrCode %>" alt="QR Code" class="qr-code">
+        </div>
+
+        <p>After scanning, enter the 6-digit OTP from your authenticator app.</p>
+
+        <form action="/auth/enable-2fa" method="POST" class="otp-form">
+            <label for="otp">Enter OTP:</label>
+            <input type="text" name="otp" class="otp-input" required placeholder="Enter OTP">
+            <button type="submit" class="btn-primary">Verify & Enable 2FA</button>
+        </form>
+
+        <% if (error) { %>
+            <p class="error-msg"><%= error %></p>
+        <% } %>
+
+        <a href="/dashboard" class="btn-secondary">Back to Dashboard</a>
+    </div>
+</body>
+</html>

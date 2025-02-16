@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Data</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Manage Your Data</h2>
+
+        <form action="/data/add" method="POST">
+            <input type="text" name="content" placeholder="Enter new data" required>
+            <button type="submit">Add Data</button>
+        </form>
+
+        <ul>
+            <% data.forEach(item => { %>
+                <li>
+                    <%= item.content %>
+                    <form action="/data/edit/<%= item._id %>" method="POST" style="display:inline;">
+                        <input type="text" name="content" placeholder="Edit data" required>
+                        <button type="submit">Edit</button>
+                    </form>
+                    <form action="/data/delete/<%= item._id %>" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+
+        <a href="/dashboard">Back to Dashboard</a>
+    </div>
+</body>
+</html>
